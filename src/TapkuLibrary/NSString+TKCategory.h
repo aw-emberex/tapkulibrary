@@ -45,6 +45,8 @@
  */
 - (NSString*) URLEncode;
 
+- (NSString*) URLDecode;
+
 /** Returns a `NSString` that properly replaces HTML specific character sequences. 
  @return An escaped HTML string.
  */

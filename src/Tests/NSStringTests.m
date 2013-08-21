@@ -57,6 +57,14 @@
 	STAssertEqualObjects([@"\"Aardvarks lurk, OK?\"" URLEncode], @"%22Aardvarks%20lurk%2C%20OK%3F%22", nil);
 }
 
+- (void) testURLDecode {
+    NSString * cardTest = @"?test ;";
+    NSString* encoded = [cardTest URLEncode];
+
+    STAssertEqualObjects(@"%3Ftest%20%3B", encoded, @"encode should work");
+    STAssertEqualObjects(cardTest, [encoded URLDecode], @"decode should work");
+}
+
 
 - (void) testHasString{
 	

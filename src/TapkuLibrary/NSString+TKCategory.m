@@ -63,6 +63,15 @@
 	
 }
 
+- (NSString*) URLDecode{
+
+    NSString *decodedString = (__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(
+            NULL,
+            (__bridge CFStringRef)self,
+            CFSTR(""),
+            kCFStringEncodingUTF8);
+    return decodedString;
+}
 
 - (NSString *) escapeHTML{
 	NSMutableString *s = [NSMutableString string];
@@ -92,9 +101,6 @@
 			case '"':
 				[s appendString:@"&quot;"];
 				break;
-				//			case '…':
-				//				[s appendString:@"&hellip;"];
-				//				break;
 			case '&':
 				[s appendString:@"&amp;"];
 				break;
@@ -175,10 +181,6 @@
 - (BOOL) hasString:(NSString*)substring{
 	return !([self rangeOfString:substring].location == NSNotFound);
 }
-
-
-
-
 
 - (NSString*) formattedPhoneNumberWithLastCharacterRemoved:(BOOL)deleteLastChar{
 	if(self.length<1) return @"";
