@@ -58,11 +58,11 @@
 }
 
 - (void) testURLDecode {
-    NSString * cardTest = @"?test ;";
-    NSString* encoded = [cardTest URLEncode];
+    NSString * originalString = @"?test ;";
+    NSString* encoded = [originalString URLEncode];
 
     STAssertEqualObjects(@"%3Ftest%20%3B", encoded, @"encode should work");
-    STAssertEqualObjects(cardTest, [encoded URLDecode], @"decode should work");
+    STAssertEqualObjects(originalString, [encoded URLDecode], @"decode should work");
 }
 
 
